@@ -90,10 +90,6 @@ def streets():
 
     return jsonify(response)
 
-# Types of businesses suitable for specific regions.
-# group by street, sample location point of one business
-# for each naics_group, calculate efective opened (active - closed)
-# the naics_group which has highest value -> is the suitable shit
 @app.route('/suitable_business_for_a_street', methods=['GET'])
 def suitable_business_for_a_street():
     # Get query parameters from the request
@@ -127,10 +123,6 @@ def suitable_business_for_a_street():
 
     return jsonify(response)
 
-# [ Geospatial distribution of businesses over time ]
-# params -> start_date and end_date
-# response: business name, business status, location point, naics_group
-# description: map with red dots, on hover: bigger and show details as tooltip, color code for naics_groups
 @app.route('/business_distribution', methods=['GET'])
 def distribution_of_businesses():
     # Get query parameters from the request
@@ -176,8 +168,6 @@ def distribution_of_businesses():
 
     return jsonify(response)
 
-# Regions that have experienced economic growth or decline
-# resposne: street_name, sample of location point, hover: details of total open and closed, color for growth or decline
 @app.route('/economic_activity', methods=['GET'])
 def economic_activity():
     economic_activities = df.groupBy(
